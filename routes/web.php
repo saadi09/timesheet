@@ -102,7 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::post('schedules/update', 'Admin\SchedulesController@update');
 			Route::get('schedules/delete/{id}', 'Admin\SchedulesController@delete');
 			Route::get('schedules/archive/{id}', 'Admin\SchedulesController@archive');
-
+			Route::get('schedules/sendEmail/{id}', 'Admin\SchedulesController@edit');
 
 			/*
 			|--------------------------------------------------------------------------
@@ -298,3 +298,7 @@ Route::view('account-disabled', 'errors.account-disabled')->name('disabled');
 Route::view('account-not-found', 'errors.account-not-found')->name('notfound');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

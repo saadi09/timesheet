@@ -14,6 +14,7 @@ use App\Classes\permission;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 
 class SchedulesController extends Controller
@@ -77,6 +78,17 @@ class SchedulesController extends Controller
         $s = table::schedules()->where('id', $id)->first();
         $r = explode(', ', $s->restday);
         
+        return view('admin.edits.edit-schedule', compact('s','r'));
+    }
+
+    public function sendSchedule($id, Request $request) 
+    {
+        if (permission::permitted('schedules-edit')=='fail'){ return redirect()->route('denied'); }
+
+        $shifts = table::schedules()->where('id', $id)->first();
+        $user=table::user()->where('id', )->get();
+        $r = explode(', ', $s->restday);
+        Mail::to($request->user())->send($user, $shifts);
         return view('admin.edits.edit-schedule', compact('s','r'));
     }
 

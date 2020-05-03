@@ -61,6 +61,7 @@
                                 </td>
                                 <td class="align-right">
                                     @if($sched->archive == '0') 
+                                    <a href="{{ url('/schedules/sendEmail/'.$sched->id) }}" class="ui circular basic icon button tiny"><i class="icon mail outline"></i></a>
                                         <a href="{{ url('/schedules/edit/'.$sched->id) }}" class="ui circular basic icon button tiny"><i class="icon edit outline"></i></a>
                                         <a href="{{ url('/schedules/delete/'.$sched->id) }}" class="ui circular basic icon button tiny"><i class="icon trash alternate outline"></i></a>
                                         <a href="{{ url('/schedules/archive/'.$sched->id) }}" class="ui circular basic icon button tiny"><i class="icon archive"></i></a>
